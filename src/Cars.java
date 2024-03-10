@@ -10,11 +10,11 @@ class Cars {
     private final String brand;
     public String color;
     private int price;
-    private static int numberOfCars = 0;
+
 
     Cars(String brand) {
         this.brand = brand;
-        numberOfCars++;
+        //numberOfCars++;
     }
 
     /**
@@ -51,9 +51,7 @@ class Cars {
         return price;
     }
 
-    protected static int getNumberOfCars() {
-        return numberOfCars;
-    }
+
 
     class ColorType {
         void printName() {
@@ -69,7 +67,7 @@ class Cars {
     public void localClassExample() {
         class Local {
             void printMessage() {
-                System.out.println("Local class inside Car " + brand);
+                System.out.println("Additional warranty comes with: " + brand);
             }
         }
         Local local = new Local();
@@ -84,7 +82,7 @@ class Cars {
         Behavior behavior = new Behavior() {
             @Override
             public void action() {
-                System.out.println(brand + "wrooom. Thanks for visiting");
+                System.out.println(brand + "wroooms. Thanks for visiting");
             }
         };
         behavior.action();
