@@ -1,26 +1,42 @@
-public class Model  {
+public class Model extends Brand {
+    private static int numOfVehicles = 0;
+    private final String modelName;
+    private int year;
+    private int price;
 
-    Model(){
-       // System.out.println("This is a model constructor.");
+
+    public Model(String modelName, int year, int price, String warranty) {
+        super(warranty);
+        this.modelName = modelName ;
+        this.year = year;
+        this.price = price;
+        numOfVehicles++;
     }
 
-    public String model;
-
-    /**
-     * This is constructor with 1 params
-     * @param model - model name of {@link Cars}
-     */
-
-    Model(String model) {
-        this.model = model;
+    public int getPrice() {
+        return price;
     }
 
-    public void setModel(String newModel) {
-        model = newModel;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
-    public String getModel() {
-        return model;
+    public String getModelName() {
+        return modelName;
     }
 
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public static int getNumOfVehicles() {
+        return numOfVehicles;
+    }
+    public void displaySlogan() {
+        // {System.out.println("WestCoast Motors - always the best choice");}
+    }
 }
