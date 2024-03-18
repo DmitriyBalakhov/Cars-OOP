@@ -6,7 +6,7 @@
  * Created by Dmitriy.Balakhov
  * Date 07.03.2024
  */
-class Cars {
+  class Cars {
     private final String brand;
     public String color;
     private int price;

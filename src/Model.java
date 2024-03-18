@@ -1,4 +1,4 @@
-public class Model {
+public class Model  {
 
     Model(){
        // System.out.println("This is a model constructor.");
