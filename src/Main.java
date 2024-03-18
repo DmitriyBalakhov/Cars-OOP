@@ -8,10 +8,8 @@ public class Main {
         dealershipSlogan.brandSlogan("WestCoast Motors - always the best choice");
 
         // Home task requirements checklist :
-        // Interfaces(with static and default methods) - DONE (interface - Availability)
-        // Add nested classes OR interface DONE (class Cars - internal class ColorType)
-        // And enums - DONE (class CountryOfManufacture)
-        // Add documentation for classes and public methods - DONE
+        // Use all exception keywords
+        // Create a new exception
 
 
         System.out.println("Our automobiles are presented by best European brands from " + CountryOfManufactore.JAPAN + " and " + CountryOfManufactore.GERMANY);
