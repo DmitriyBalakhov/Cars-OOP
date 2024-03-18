@@ -1,90 +1,41 @@
-//abstract class Car {
+abstract class Cars implements Availability{
 
-/**
- * This is class {@Car}
- * {@Author} Dmitriy
- * Created by Dmitriy.Balakhov
- * Date 07.03.2024
- */
-  class Cars {
-    private final String brand;
-    public String color;
-    private int price;
+    //Abstract class Cars contains data about vehicle condition and its color.
 
+    private String vehicleCondition;
+    private String color;
 
-    Cars(String brand) {
-        this.brand = brand;
-        //numberOfCars++;
+    //Method displaySlogan is designed to print out brand's slogans.
+    public abstract void displaySlogan();
+
+    //Method getVehicleCondition is used for getting vehicle condition status.
+    public String getVehicleCondition() {
+        return vehicleCondition;
     }
 
-    /**
-     * This is constructor with 3 params
-     *
-     * @param brand - name of {@link Cars}
-     * @param price - weight of {@link Cars}
-     * @param color - color of {@link Cars}
-     */
-    Cars(String brand, String color, int price) {
-        this.brand = brand;
-        this.color = color;
-        this.price = price;
-
+    //Method setVehicleCondition is used to set vehicle condition status. It can be "Used" or "Brand New"
+    public void setVehicleCondition(String vehicleCondition) {
+        this.vehicleCondition = vehicleCondition;
     }
 
-    public String getBrandName() {
-        return brand;
-    }
-
-    public void setColor(String newColor) {
-        color = newColor;
-    }
-
+    //Method getColor is used to get vehicle condition color.
     public String getColor() {
         return color;
     }
 
-    public void setPrice(int newPrice) {
-        price = newPrice;
+    //Method setColor is used to set vehicle condition color.
+    public void setColor(String color) {
+        this.color = color;
     }
-
-    public int getPrice() {
-        return price;
-    }
-
-
 
     class ColorType {
-        void printName() {
-            System.out.println("Metallic type of color is available for: " + brand);
-        }
-    }
-    static class NestedStatic {
-        void printStatic() {
-            System.out.println("Static nested class in Cars");
-        }
-    }
-
-    public void localClassExample() {
-        class Local {
-            void printMessage() {
-                System.out.println("Additional warranty comes with: " + brand);
-            }
-        }
-        Local local = new Local();
-        local.printMessage();
-    }
-
-    interface Behavior {
-        void action();
-    }
-
-    void performAction() {
-        Behavior behavior = new Behavior() {
-            @Override
-            public void action() {
-                System.out.println(brand + "wroooms. Thanks for visiting");
-            }
+        void metallicTypeIsAvailable () {
+            System.out.println("Metallic color type is available for this model");
         };
-        behavior.action();
+        void metallicTypeIsNotAvailable () {
+            System.out.println("Metallic color type is not available for this model");
+        };
+
     }
+
 }

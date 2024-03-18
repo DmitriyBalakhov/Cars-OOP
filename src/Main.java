@@ -2,89 +2,129 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+        System.out.println("*******");
         System.out.println("Welcome to our dealership!");
-        System.out.println("Please take a look of our available cars");
-        System.out.println(" ");
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        Cars lexus = new Cars("Lexus ");
-        Lot lexusLot01 = new Lot("LXS01 ");
-        System.out.println("Current model lot is: " + lexusLot01.getLot());
-        Model lexusModel = new Model();
-        lexusModel.setModel("RX300 ");
-        Bodytype lexusBodytype = new Bodytype();
-        lexusBodytype.setBodytype("SUV");
-        Condition newCondition = new Condition("Brand new ");
-        System.out.println(newCondition.getCondition() + lexus.getBrandName() + lexusModel.getModel() + lexusBodytype.getBodytype());
-        lexus.setColor("blue");
-        System.out.println("Color of model is " + lexus.getColor());
-        lexus.setPrice(65000);
-        System.out.println("Price - " + lexus.getPrice());
+        Slogan dealershipSlogan = new Slogan();
+        dealershipSlogan.brandSlogan("WestCoast Motors - always the best choice");
+
+        // Home task requirements checklist :
+        // Interfaces(with static and default methods) - DONE (interface - Availability)
+        // Add nested classes OR interface DONE (class Cars - internal class ColorType)
+        // And enums - DONE (class CountryOfManufacture)
+        // Add documentation for classes and public methods - DONE
+
+
+        System.out.println("Our automobiles are presented by best European brands from " + CountryOfManufactore.JAPAN + " and " + CountryOfManufactore.GERMANY);
+        System.out.println("We are official partners of " + CountryOfManufactore.JAPAN.getBrands() + CountryOfManufactore.GERMANY.getBrands());
+        System.out.println("Please take a look at our available cars");
         System.out.println(" ");
 
-        Cars mercedes = new Cars("Mercedes ");
-        Lot mercedesLot01 = new Lot("MRS01 ");
-        System.out.println("Current model lot is: " + mercedesLot01.getLot());
-        Model mercedesModel = new Model();
-        mercedesModel.setModel("E class ");
-        Bodytype mercedesBodytype = new Bodytype();
-        mercedesBodytype.setBodytype("SUV");
-        System.out.println(newCondition.getCondition() + mercedes.getBrandName() + mercedesModel.getModel() + mercedesBodytype.getBodytype());
-        mercedes.setColor("Silver");
-        System.out.println("Color of model is " + mercedes.getColor());
-        mercedes.setPrice(90000);
-        System.out.println("Price - " + mercedes.getPrice());
-        System.out.println(" ");
+        Brand toyota = new Brand("");
+        Brand lexus = new Brand("");
+        Brand mercedes = new Brand("");
+        Brand bmw = new Brand("");
 
-        Cars bmw = new Cars("BMW ");
-        Lot bmwLot01 = new Lot("BMW01 ");
-        System.out.println("Current model lot is: " + bmwLot01.getLot());
-        Model bmwModel = new Model();
-        bmwModel.setModel("M5 ");
-        Bodytype bmwBodytype = new Bodytype();
-        bmwBodytype.setBodytype("sedan");
-        Condition usedCondition = new Condition("Used ");
-        System.out.println(usedCondition.getCondition() + bmw.getBrandName() + bmwModel.getModel() + bmwBodytype.getBodytype());
-        bmw.setColor("black");
-        bmw.setPrice(49900);
-        System.out.println("Color of model is " + bmw.getColor());
-        System.out.println("Price of the day - " + bmw.getPrice());
-        System.out.println(" ");
+        Brand westCoastMotorsBrand = new Brand("");
 
-        Lot bmwLot02 = new Lot("BMW02 ");
-        System.out.println("Current model lot is: " + bmwLot02.getLot());
-        bmwModel.setModel("X6 ");
-        bmwBodytype.setBodytype("SUV");
-        System.out.println(usedCondition.getCondition() + bmw.getBrandName() + bmwModel.getModel() + bmwBodytype.getBodytype());
-        bmw.setColor("Grey");
-        bmw.setPrice(57000);
-        System.out.println("Color of model is " + bmw.getColor());
-        System.out.println("Price of the day - " + bmw.getPrice());
-        System.out.println(" ");
+        toyota.setBrandName("Toyota");
+        lexus.setBrandName("Lexus");
+        mercedes.setBrandName("Mercedes");
+        bmw.setBrandName("BMW");
 
+        Model model001 = new Model("RAV4",2020, 28000, "1 year");
+        model001.setBodyType("SUV");
+        model001.setVehicleCondition("Used");
+        model001.setColor("Grey");
 
-        Cars honda = new Cars("Honda ");
-        Lot hondaLot01 = new Lot("HND01 ");
-        System.out.println("Current model lot is: " + hondaLot01.getLot());
-        Model hondaModel = new Model();
-        hondaModel.setModel("Civic Type R ");
-        System.out.println(usedCondition.getCondition() + honda.getBrandName()+ hondaModel.getModel());
-        honda.setColor("red");
-        honda.setPrice(29900);
-        System.out.println("Color of model is " + honda.getColor());
-        System.out.println("Price of the day - " + honda.getPrice());
-        System.out.println(" ");
+        Model model002 = new Model("ES300",2024, 65000,"3 years");
+        model002.setBodyType("Sedan");
+        model002.setVehicleCondition("Brand New");
+        model002.setColor("Black");
 
-        System.out.println("Total cars available in store : " + Lot.getNumberOfCars());
+        Model model003 = new Model("S Class",2024, 100000,"3 years");
+        model003.setBodyType("Sedan");
+        model003.setVehicleCondition("Brand New");
+        model003.setColor("Black");
 
-        Cars.ColorType metallic = mercedes.new ColorType();
-        metallic.printName();
+        Model model004 = new Model("M4",2023, 80000,"3 years");
+        model004.setBodyType("Coupe");
+        model004.setVehicleCondition("Brand New");
+        model004.setColor("Red");
+
+        Cars.ColorType metallic1 = model001.new ColorType();
+        Cars.ColorType metallic2 = model002.new ColorType();
+        Cars.ColorType metallic3 = model003.new ColorType();
+        Cars.ColorType metallic4 = model004.new ColorType();
+
+        //Toyota RAV4 2020 SUV
+        System.out.println("Brand : " + toyota.getBrandName());
+        Slogan toyotaSlogan = new Slogan();
+        toyotaSlogan.brandSlogan("Always A Better Way");
+        System.out.println("Body Type: " + model001.getBodyType());
+        System.out.println("Model Name: " + model001.getModelName());
+        System.out.println("Year: " + model001.getYear());
+        System.out.println("Color: " + model001.getColor());
+        metallic1.metallicTypeIsNotAvailable();
+        System.out.println("Condition: " + model001.getVehicleCondition());
+        System.out.println("Warranty: " + model001.getWarranty());
+        System.out.println("Price: " + model001.getPrice());
+        model001.isAvailable(); // Interface Availability, method isAvailable()
 
 
-        //Cars.NestedStatic nestedStatic = new Cars.NestedStatic( );
-        // nestedStatic.printStatic();
-        honda.localClassExample();
-        bmw.performAction();
+        System.out.println("*******");
+        //Lexus ES300 2024 Sedan
+        System.out.println("Brand : " + lexus.getBrandName());
+        Slogan lexusSlogan = new Slogan();
+        lexusSlogan.brandSlogan("The Pursuit of Perfection");
+        System.out.println("Body Type: " + model002.getBodyType());
+        System.out.println("Model Name: " + model002.getModelName());
+        System.out.println("Year: " + model002.getYear());
+        System.out.println("Color: " + model002.getColor());
+        metallic2.metallicTypeIsAvailable();
+        System.out.println("Condition: " + model002.getVehicleCondition());
+        System.out.println("Warranty: " + model002.getWarranty());
+        System.out.println("Price: " + model002.getPrice());
+        model002.isAvailableForOrder(); // Interface Availability, method isAvailableForOrder()
+
+        System.out.println("*******");
+        //Mercedes S Class 2024 Sedan
+        System.out.println("Brand : " + mercedes.getBrandName());
+        Slogan mercedesSlogan = new Slogan();
+        mercedesSlogan.brandSlogan("The best or nothing");
+        System.out.println("Body Type: " + model003.getBodyType());
+        System.out.println("Model Name: " + model003.getModelName());
+        System.out.println("Year: " + model003.getYear());
+        System.out.println("Color: " + model003.getColor());
+        metallic3.metallicTypeIsNotAvailable();
+        System.out.println("Condition: " + model003.getVehicleCondition());
+        System.out.println("Warranty: " + model003.getWarranty());
+        System.out.println("Price: " + model003.getPrice());
+        Availability.isNotAvailable(); // Interface Availability, method isNotAvailable()
+
+        System.out.println("*******");
+        //BMW M5 2023 Coupe
+        System.out.println("Brand : " + bmw.getBrandName());
+        Slogan bmwSlogan = new Slogan();
+        bmwSlogan.brandSlogan("Sheer Driving Pleasure");
+        System.out.println("Body Type: " + model004.getBodyType());
+        System.out.println("Model Name: " + model004.getModelName());
+        System.out.println("Year: " + model004.getYear());
+        System.out.println("Color: " + model004.getColor());
+        metallic4.metallicTypeIsNotAvailable();
+        System.out.println("Condition: " + model004.getVehicleCondition());
+        System.out.println("Warranty: " + model004.getWarranty());
+        System.out.println("Price: " + model004.getPrice());
+        model004.isAvailable(); // Interface Availability, method isAvailable()
+
+        System.out.println("*******");
+
+        System.out.println("Total number of vehicles: " + Model.getNumOfVehicles());
+        westCoastMotorsBrand.displaySlogan();
+        System.out.println("Thanks for visiting");
 
     }
 }
+
+
+
+
