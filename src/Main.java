@@ -1,128 +1,132 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
+// This home task is designed as a short questionnaire with input field, so user can interact with the program.
+// Custom exception InvalidInputException is implemented in the code
+
 public class Main {
+
+    static class InvalidInputException extends Exception {
+        public InvalidInputException(String message) {
+            super(message);
+        }
+    }
+
     public static void main(String[] args) {
-        System.out.println("*******");
-        System.out.println("Welcome to our dealership!");
-        Slogan dealershipSlogan = new Slogan();
-        dealershipSlogan.brandSlogan("WestCoast Motors - always the best choice");
+        Scanner scanner = new Scanner(System.in);
 
-        // Home task requirements checklist :
-        // Use all exception keywords
-        // Create a new exception
+        try {
+            System.out.println("Welcome to our dealership!");
+            System.out.println("We are official partners of Lexus and Toyota");
 
+            String brand = askBrand(scanner);
+            if (brand.equalsIgnoreCase("lexus")) {
+                System.out.println("Please take a look at our catalog:");
+                System.out.println("");
+                System.out.println("Lexus RX350, 2024, Grey, SUV, 65 000 USD");
+                System.out.println("Lexus ES300, 2024, Black, Sedan, 55 000 USD");
+                System.out.println("");
+            } else if (brand.equalsIgnoreCase("toyota")) {
+                System.out.println("Please take a look at our catalog:");
+                System.out.println("");
+                System.out.println("Toyota Camry, 2023, Grey, Sedan, 35 000 USD");
+                System.out.println("Toyota RAV4, 2023, Grey, SUV, 42 000 USD");
+                System.out.println("");
+            }
 
-        System.out.println("Our automobiles are presented by best European brands from " + CountryOfManufactore.JAPAN + " and " + CountryOfManufactore.GERMANY);
-        System.out.println("We are official partners of " + CountryOfManufactore.JAPAN.getBrands() + CountryOfManufactore.GERMANY.getBrands());
-        System.out.println("Please take a look at our available cars");
-        System.out.println(" ");
+            boolean testDriveOption = TestDriveOption(scanner);
+            if (testDriveOption) {
+                boolean ageVerification = AgeVerification(scanner);
+                if (ageVerification) {
+                    PhoneNumberInput(scanner);
+                }
+            }
 
-        Brand toyota = new Brand("");
-        Brand lexus = new Brand("");
-        Brand mercedes = new Brand("");
-        Brand bmw = new Brand("");
+            System.out.println("Thanks for a visiting.");
+        } catch (InvalidInputException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            scanner.close();
+        }
+    }
 
-        Brand westCoastMotorsBrand = new Brand("");
-
-        toyota.setBrandName("Toyota");
-        lexus.setBrandName("Lexus");
-        mercedes.setBrandName("Mercedes");
-        bmw.setBrandName("BMW");
-
-        Model model001 = new Model("RAV4",2020, 28000, "1 year");
-        model001.setBodyType("SUV");
-        model001.setVehicleCondition("Used");
-        model001.setColor("Grey");
-
-        Model model002 = new Model("ES300",2024, 65000,"3 years");
-        model002.setBodyType("Sedan");
-        model002.setVehicleCondition("Brand New");
-        model002.setColor("Black");
-
-        Model model003 = new Model("S Class",2024, 100000,"3 years");
-        model003.setBodyType("Sedan");
-        model003.setVehicleCondition("Brand New");
-        model003.setColor("Black");
-
-        Model model004 = new Model("M4",2023, 80000,"3 years");
-        model004.setBodyType("Coupe");
-        model004.setVehicleCondition("Brand New");
-        model004.setColor("Red");
-
-        Cars.ColorType metallic1 = model001.new ColorType();
-        Cars.ColorType metallic2 = model002.new ColorType();
-        Cars.ColorType metallic3 = model003.new ColorType();
-        Cars.ColorType metallic4 = model004.new ColorType();
-
-        //Toyota RAV4 2020 SUV
-        System.out.println("Brand : " + toyota.getBrandName());
-        Slogan toyotaSlogan = new Slogan();
-        toyotaSlogan.brandSlogan("Always A Better Way");
-        System.out.println("Body Type: " + model001.getBodyType());
-        System.out.println("Model Name: " + model001.getModelName());
-        System.out.println("Year: " + model001.getYear());
-        System.out.println("Color: " + model001.getColor());
-        metallic1.metallicTypeIsNotAvailable();
-        System.out.println("Condition: " + model001.getVehicleCondition());
-        System.out.println("Warranty: " + model001.getWarranty());
-        System.out.println("Price: " + model001.getPrice());
-        model001.isAvailable(); // Interface Availability, method isAvailable()
+    static String askBrand(Scanner scanner) throws InvalidInputException {
+        while (true) {
+            System.out.print("What brand are you looking for? (Lexus/Toyota): ");
+            String brand = scanner.nextLine().toLowerCase();
+            switch (brand) {
+                case "lexus":
+                    System.out.println("You have exquisite taste!");
+                    return brand;
+                case "toyota":
+                    System.out.println("Great choice!");
+                    return brand;
+                case "":
+                    System.out.println("Please enter a brand.");
+                    break;
+                default:
+                    System.out.println("Sorry, but currently we are not working with this brand.");
+                    break;
+            }
+        }
+    }
 
 
-        System.out.println("*******");
-        //Lexus ES300 2024 Sedan
-        System.out.println("Brand : " + lexus.getBrandName());
-        Slogan lexusSlogan = new Slogan();
-        lexusSlogan.brandSlogan("The Pursuit of Perfection");
-        System.out.println("Body Type: " + model002.getBodyType());
-        System.out.println("Model Name: " + model002.getModelName());
-        System.out.println("Year: " + model002.getYear());
-        System.out.println("Color: " + model002.getColor());
-        metallic2.metallicTypeIsAvailable();
-        System.out.println("Condition: " + model002.getVehicleCondition());
-        System.out.println("Warranty: " + model002.getWarranty());
-        System.out.println("Price: " + model002.getPrice());
-        model002.isAvailableForOrder(); // Interface Availability, method isAvailableForOrder()
+    static boolean TestDriveOption(Scanner scanner) throws InvalidInputException {
+        while (true) {
+            System.out.print("Would you like to book a free test drive? (Yes/No): ");
+            String choice = scanner.nextLine().toLowerCase();
+            switch (choice) {
+                case "yes":
+                    return true;
+                case "no":
+                    return false;
+                case "":
+                    System.out.println("Please answer Yes or No.");
+                    break;
+                default:
+                    System.out.println("Please answer Yes or No.");
+                    break;
+            }
+        }
+    }
 
-        System.out.println("*******");
-        //Mercedes S Class 2024 Sedan
-        System.out.println("Brand : " + mercedes.getBrandName());
-        Slogan mercedesSlogan = new Slogan();
-        mercedesSlogan.brandSlogan("The best or nothing");
-        System.out.println("Body Type: " + model003.getBodyType());
-        System.out.println("Model Name: " + model003.getModelName());
-        System.out.println("Year: " + model003.getYear());
-        System.out.println("Color: " + model003.getColor());
-        metallic3.metallicTypeIsNotAvailable();
-        System.out.println("Condition: " + model003.getVehicleCondition());
-        System.out.println("Warranty: " + model003.getWarranty());
-        System.out.println("Price: " + model003.getPrice());
-        Availability.isNotAvailable(); // Interface Availability, method isNotAvailable()
 
-        System.out.println("*******");
-        //BMW M5 2023 Coupe
-        System.out.println("Brand : " + bmw.getBrandName());
-        Slogan bmwSlogan = new Slogan();
-        bmwSlogan.brandSlogan("Sheer Driving Pleasure");
-        System.out.println("Body Type: " + model004.getBodyType());
-        System.out.println("Model Name: " + model004.getModelName());
-        System.out.println("Year: " + model004.getYear());
-        System.out.println("Color: " + model004.getColor());
-        metallic4.metallicTypeIsNotAvailable();
-        System.out.println("Condition: " + model004.getVehicleCondition());
-        System.out.println("Warranty: " + model004.getWarranty());
-        System.out.println("Price: " + model004.getPrice());
-        model004.isAvailable(); // Interface Availability, method isAvailable()
+    static boolean AgeVerification(Scanner scanner) throws InvalidInputException {
+        while (true) {
+            System.out.print("Are you 18 years old or older? (Yes/No): ");
+            String ageChoice = scanner.nextLine().toLowerCase();
+            switch (ageChoice) {
+                case "yes":
+                    return true;
+                case "no":
+                    System.out.println("Sorry, but you are not allowed to join the test drive program.");
+                    return false;
+                case "":
+                    System.out.println("Please answer Yes or No.");
+                    break;
+                default:
+                    System.out.println("Please answer Yes or No.");
+                    break;
+            }
+        }
+    }
 
-        System.out.println("*******");
-
-        System.out.println("Total number of vehicles: " + Model.getNumOfVehicles());
-        westCoastMotorsBrand.displaySlogan();
-        System.out.println("Thanks for visiting");
-
+    static void PhoneNumberInput(Scanner scanner) throws InvalidInputException {
+        while (true) {
+            try {
+                System.out.print("Please enter your phone number: ");
+                String phoneNumber = scanner.nextLine();
+                if (!phoneNumber.matches("\\d+")) {
+                    throw new InvalidInputException("Please use only numbers for phone number(7 digits format)");
+                }
+                if (phoneNumber.length() != 7) {
+                    throw new InvalidInputException("Phone number should contain at least 7 digits.");
+                }
+                System.out.println("Our manager will contact you shortly.");
+                return;
+            } catch (InvalidInputException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }
-
-
-
-
